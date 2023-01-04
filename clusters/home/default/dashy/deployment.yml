@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: heimdall
-  namespace: default
+  name: dashy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: heimdall
+      app: dashy
   template:
     metadata:
       labels:
-        app: heimdall
+        app: dashy
     spec:
       containers:
-      - name: heimdall
-        image: jmcarbo/heimdall:latest
+      - name: dashy
+        image: lissy93/dashy
         ports:
         - containerPort: 8080
+        
