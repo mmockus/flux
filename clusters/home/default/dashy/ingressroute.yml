@@ -11,13 +11,13 @@ spec:
     match: Host(`www.dashy.mockus.xyz`)
     services:
     - name: dashy
-      port: 8000
+      port: 80
   - kind: Rule
     match: Host(`dashy.mockus.xyz`)
     middlewares:
     - name: default-headers
     services:
     - name: dashy
-      port: 8000
+      port: 80
   tls:
     secretName: mockus-xyz-tls
