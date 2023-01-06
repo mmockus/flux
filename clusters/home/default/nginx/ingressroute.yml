@@ -1,8 +1,11 @@
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: nginx
   namespace: default
+  annotations: 
+    kubernetes.io/ingress.class: traefik-external
 spec:
   entryPoints:
   - websecure
