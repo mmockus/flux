@@ -1,0 +1,23 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nginx
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`www.nginx.mockus.xyz`)
+    services:
+    - name: nginx
+      port: 80
+  - kind: Rule
+    match: Host(`nginx.mockus.xyz`)
+    middlewares:
+    - name: default-headers
+    services:
+    - name: nginx
+      port: 80
+  tls:
+    secretName: mockus-xyz-tls

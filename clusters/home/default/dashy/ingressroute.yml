@@ -1,0 +1,23 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dashy
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`www.dashy.mockus.xyz`)
+    services:
+    - name: dashy
+      port: 80
+  - kind: Rule
+    match: Host(`dashy.mockus.xyz`)
+    middlewares:
+    - name: default-headers
+    services:
+    - name: dashy
+      port: 80
+  tls:
+    secretName: mockus-xyz-tls
