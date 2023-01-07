@@ -20,6 +20,8 @@ flux bootstrap github \
   --token-auth 
 ```  
 
+`flux get kustomizations -w`
+
 ## References
 
 - [Techno Tim - The FASTEST way to deploy apps to Kubernetes - GitOps with FLUX](https://docs.technotim.live/posts/flux-devops-gitops/)
