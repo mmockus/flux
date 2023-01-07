@@ -21,10 +21,10 @@ spec:
         image: lissy93/dashy:latest
         volumeMounts:
         - name: config
-          mountPath: "/app/public/conf.yml"
-          subPath: "conf.yml"
-          readOnly: true
+          mountPath: "/app/public"
+          subpath: "public"
+          readOnly: false
       volumes:
       - name: config
-        configMap:
-          name: dashy
+        persistentVolumeClaim:
+          claimName: dashy
