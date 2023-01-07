@@ -1,0 +1,223 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dashy2
+  namespace: default
+data:
+  # file-like keys
+  conf.yml: |
+    ---
+    appConfig:
+      theme: colorful
+      layout: auto
+      iconSize: medium
+      language: en
+    pageInfo:
+      title: Dashy
+      description: Welcome to your new dashboard!
+      navLinks:
+        - title: GitHub
+          path: https://github.com/Lissy93/dashy
+        - title: Documentation
+          path: https://dashy.to/docs
+      footerText: ''
+    sections:
+      - name: Infrastructure
+        displayData:
+          sortBy: default
+          rows: 1
+          cols: 1
+          collapsed: false
+          hideForGuests: false
+        items:
+          - title: Synology
+            description: Synology Disk Station
+            icon: https://ds.mockus.home:5001/webman/resources/images/icon_dsm_96.png
+            url: https://ds.mockus.home:5001
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: >-
+              https://192.168.5.60:5001/webapi/query.cgi?api=SYNO.API.Info&version=1&method=query&query=summary
+            statusCheckAllowInsecure: true
+            id: 0_1505_synology
+          - title: Unifi
+            icon: favicon-local
+            url: https://ui.mockus.home
+            target: newtab
+            statusCheck: false
+            statusCheckUrl: >-
+              https://192.168.5.60:5001/webapi/query.cgi?api=SYNO.API.Info&version=1&method=query&query=summary
+            id: 1_1505_unifi
+          - title: Rancher
+            description: ''
+            icon: favicon-local
+            url: https://rancher.mockus.xyz
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: https://rancher.mockus.xyz/v3/clusters
+            id: 2_1505_rancher
+          - title: Pihole
+            icon: http://192.168.7.101/admin/img/favicons/favicon.ico
+            url: http://192.168.7.101/admin/
+            target: newtab
+            statusCheckUrl: http://192.168.7.101/admin/api.php?summaryRaw
+            statusCheck: true
+            id: 3_1505_pihole
+          - title: Pihole-Zero
+            icon: http://192.168.7.60/admin/img/favicons/favicon.ico
+            url: http://192.168.7.60/admin/
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: http://192.168.7.60/admin/api.php?summaryRaw
+            id: 4_1505_piholezero
+          - title: Pihole-DS
+            icon: http://ds.mockus.home:8000/admin/img/favicons/favicon.ico
+            url: http://ds.mockus.home:8000/admin/settings.php?tab=api
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: http://ds.mockus.home:8000/admin/api.php?summaryRaw
+            id: 5_1505_piholeds
+          - title: Proxmox
+            icon: https://proxmox.mockus.home:8006/pve2/images/logo-128.png
+            url: 'https://proxmox.mockus.home:8006/#v1:0:=qemu%2F321:4:5::::52::'
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: https://proxmox.mockus.home:8006/api2/json/cluster/status
+            id: 6_1505_proxmox
+          - title: Portainer
+            icon: https://portainer.mockus.home:30779/63a301f0574f1a696ce6.png
+            url: https://portainer.mockus.home:30779
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: https://portainer.mockus.home:30779/api/status
+            id: 7_1505_portainer
+          - title: Supermicro
+            icon: favicon
+            url: https://192.168.4.20/
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: https://192.168.4.20/
+            id: 8_1505_supermicro
+          - title: Traefik
+            icon: favicon
+            url: https://traefik.mockus.xyz/dashboard/#/
+            target: newtab
+            id: 9_1505_traefik
+          - title: Longhorn
+            icon: favicon
+            url: >-
+              https://rancher.mockus.xyz/k8s/clusters/local/api/v1/namespaces/longhorn-system/services/http:longhorn-frontend:80/proxy/#/dashboard
+            target: newtab
+            id: 10_1505_longhorn
+          - title: TrueNAS
+            icon: favicon
+            url: http://192.168.4.30/ui/sessions/signin
+            target: newtab
+            id: 11_1505_truenas
+        icon: far fa-duotone fa-server
+      - name: Home Automation
+        displayData:
+          sortBy: default
+          rows: 1
+          cols: 1
+          collapsed: false
+          hideForGuests: false
+        items:
+          - title: Casatunes Admin
+            icon: http://casa.mockus.home/casatunesX/icons/favicon.png
+            url: http://casa.mockus.home/CasaSetup/Controller.aspx
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: http://casa.mockus.home:8735/api/v1/json/metadata?op=SystemInfoRequest
+            id: 0_1482_casatunesadmin
+          - title: Casatunes Music
+            icon: http://casa.mockus.home/casatunesX/icons/favicon.png
+            url: http://casa.mockus.home/casatunesx/index.html
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: http://casa.mockus.home:8735/api/v1/json/metadata?op=SystemInfoRequest
+            id: 1_1482_casatunesmusic
+          - title: Smartthings
+            icon: https://account.samsung.com/favicon.ico
+            url: https://graph.api.smartthings.com/ide/devices
+            target: newtab
+            statusCheckUrl: https://status.smartthings.com/api/v2/summary.json
+            statusCheck: true
+            id: 2_1482_smartthings
+          - title: Blackbird HDMI Matrix
+            description: 'mac: cc:8c:da:89:6c:60'
+            icon: far fa-crow
+            url: http://192.168.4.232
+            target: newtab
+            id: 3_1482_blackbirdhdmimatrix
+          - title: Plex
+            icon: >-
+              https://www.plex.tv/wp-content/themes/plex/assets/img/favicons/favicon-32x32.png
+            url: http://ds.mockus.home:32400/web
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: http://ds.mockus.home:32400?X-Plex-Token=ZsAEJeUV5frasE248NtA
+            id: 4_1482_plex
+          - title: Jellyfin
+            icon: http://ds.mockus.home:8096/web/bc8d51405ec040305a87.ico
+            url: http://ds.mockus.home:8096
+            target: newtab
+            statusCheck: true
+            statusCheckUrl: http://ds.mockus.home:8096/emby/System/Ping
+            id: 5_1482_jellyfin
+        icon: far fa-regular fa-house-night
+      - name: Web Tools
+        displayData:
+          sortBy: default
+          rows: 1
+          cols: 1
+          collapsed: false
+          hideForGuests: false
+        items:
+          - title: Techno Tim
+            url: https://docs.technotim.live/
+            target: newtab
+            id: 0_847_technotim
+          - title: Chat GPT
+            url: https://chat.openai.com/chat
+            target: newtab
+            id: 1_847_chatgpt
+          - title: Coder
+            url: http://code.mockus.home:8000
+            target: newtab
+            id: 2_847_coder
+      - name: Getting Started
+        icon: fas fa-rocket
+        items:
+          - title: Dashy Live
+            description: Development a project management links for Dashy
+            icon: https://i.ibb.co/qWWpD0v/astro-dab-128.png
+            url: https://live.dashy.to/
+            target: newtab
+            id: 0_1481_dashylive
+          - title: GitHub
+            description: Source Code, Issues and Pull Requests
+            url: https://github.com/lissy93/dashy
+            icon: favicon
+            id: 1_1481_github
+          - title: Docs
+            description: Configuring & Usage Documentation
+            provider: Dashy.to
+            icon: far fa-book
+            url: https://dashy.to/docs
+            id: 2_1481_docs
+          - title: Showcase
+            description: See how others are using Dashy
+            url: https://github.com/Lissy93/dashy/blob/master/docs/showcase.md
+            icon: far fa-grin-hearts
+            id: 3_1481_showcase
+          - title: Config Guide
+            description: See full list of configuration options
+            url: https://github.com/Lissy93/dashy/blob/master/docs/configuring.md
+            icon: fas fa-wrench
+            id: 4_1481_configguide
+          - title: Support
+            description: Get help with Dashy, raise a bug, or get in contact
+            url: https://github.com/Lissy93/dashy/blob/master/.github/SUPPORT.md
+            icon: far fa-hands-helping
+            id: 5_1481_support

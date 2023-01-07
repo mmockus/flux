@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: dashy
+  name: dashy2
   namespace: default
   annotations: 
     kubernetes.io/ingress.class: traefik-external
@@ -9,15 +9,15 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`www.dashy.mockus.xyz`)
+    - match: Host(`www.dashy2.mockus.xyz`)
       kind: Rule
       services:
-        - name: dashy
+        - name: dashy2
           port: 80
-    - match: Host(`dashy.mockus.xyz`)
+    - match: Host(`dashy2.mockus.xyz`)
       kind: Rule
       services:
-        - name: dashy
+        - name: dashy2
           port: 80
       middlewares:
         - name: default-headers

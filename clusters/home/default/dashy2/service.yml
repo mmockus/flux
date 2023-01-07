@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: dashy
+  name: dashy2
   namespace: default
 spec:
   ports:
@@ -11,5 +11,5 @@ spec:
     protocol: TCP
     targetPort: 80
   selector:
-    app.kubernetes.io/name: dashy
+    app.kubernetes.io/name: dashy2
   sessionAffinity: None

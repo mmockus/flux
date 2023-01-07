@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dashy2
+  namespace: default
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: longhorn
+  volumeMode: Filesystem
+#  volumeName: pvc-66c06836-3c4f-4b14-a804-f11b208304e6
